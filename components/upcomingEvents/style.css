@@ -1,0 +1,48 @@
+.eventContainer {
+  background-color: #ffffff;
+  border: 1px solid #f3f3f3;
+  width: 380px;
+  height: 500px;
+  border-radius: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  h1 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #1e232a;
+    margin-top: 24px;
+    margin-left: 24px;
+  }
+  .eventCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #F3F3F3;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 5px;
+    height: 62px;
+    width: 355px;
+    .cardInfo {
+      padding: 10px;
+      .eventName {
+        font-weight: 600;
+        font-size: 16px;
+        color: #3d4756;
+        line-height: 21px;
+    }
+    .eventDate{
+      color: #797d8c;
+      font-weight: 400;
+      font-size: 400;
+      line-height: 14px;
+      margin-top: 5px;
+    }
+    }
+    .heart{
+        margin-right: 10px;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.monthContainer {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+  height: 209px;
+  background-color: #5041bc;
+  border-radius: 20px;
+  .titleCard {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin: 5px;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 42px;
+    color: #ffffff;
+  }
+  }

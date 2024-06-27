@@ -1,0 +1,58 @@
+.detailCard {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    margin-left: 13px;
+    padding: 8px;
+    border-radius: 11px;
+    height: 91px;
+    width: 351px;
+  }
+  .left {
+    h1 {
+      color: #5041bc;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 26px;
+    }
+    span {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: #797d8c;
+    }
+    .map {
+      display: flex;
+      gap: 10px;
+      margin-top: 5px;
+      align-items: center;   
+      justify-content: center;
+      align-content: center;
+    }
+  }
+   .right{
+    display: flex;
+    flex-direction: column;
+    .img{
+      height: 40px;
+      position:relative;
+      left: 15px;
+      margin-bottom: 6px;
+    }
+    .date{
+      
+      text-align: end;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: #d2d2d2;
+    }
+    .time{
+      text-align: end;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: #d2d2d2;
+    }
+   }
+  

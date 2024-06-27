@@ -1,0 +1,70 @@
+.filterContainer {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  z-index: 1000;
+
+  width: 480px;
+  height: 195px;
+  background-color: #ffffff;
+  border: 1px solid #cfcdcd;
+  padding: 15px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  h1 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #0f172a;
+  }
+  .category {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    select {
+      color: #797d8c;
+      width: 210px;
+      height: 30px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      padding: 5px;
+    }
+  }
+}
+.sort {
+  .inputsHead {
+    margin-top: 7px;
+    margin-bottom: 2px;
+    display: flex;
+    gap: 205px;
+    align-content: center;
+    span {
+      font-weight: 400;
+      font-size: 14px;
+      color: #535353;
+    }
+  }
+  .inputs {
+    display: flex;
+    gap: 30px;
+  }
+  input {
+    color: #797d8c;
+    height: 30px;
+    padding: 3px; 
+    width: 180px;
+  }
+  .inputField {
+    color: #797d8c;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    padding: 3px;
+    display: flex;
+    .dropDown{
+      align-self: center;
+      width: 13px;
+      height: 10px;
+    }
+  }
+}

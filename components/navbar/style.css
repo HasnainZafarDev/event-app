@@ -1,0 +1,32 @@
+.navContainer {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  gap: 50px;
+
+  .logo {
+    margin-top: 16px;
+    margin-left: 40px;
+  }
+  .search {
+    width: 576px;
+    height: 48px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 100px;
+    background-color: #f9fafc;
+    input {
+      color: #3d4756;
+      background-color: #f9fafc;
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: 400;
+      width: 90%;
+      height: 22px;
+      outline: none;
+    }
+  }
+}
