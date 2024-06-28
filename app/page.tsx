@@ -12,7 +12,7 @@ export default function Home() {
   const { isLoading, events, favorites, setFavorites } = useEventData();
   return (
     <div className="homeContainer">
-      {isLoading ?
+      {isLoading ? (
         <div className="spinerLoaderContainer">
           <ColorRing
             visible={true}
@@ -25,18 +25,23 @@ export default function Home() {
             colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
           />
         </div>
-        : <>
+      ) : (
+        <>
           <LeftNavbar />
           <div className="middleSection">
-            <EventList events={events} favorites={favorites} setFavorites={setFavorites} />
+            <EventList
+              events={events}
+              favorites={favorites}
+              setFavorites={setFavorites}
+            />
             <Card />
           </div>
-          <div>
+          <div className="flex flex-col gap-4">
             <UpcomingEvents />
             <EventOfTheMonth />
           </div>
         </>
-      }
+      )}
     </div>
   );
 }

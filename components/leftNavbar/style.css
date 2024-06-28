@@ -1,6 +1,4 @@
 .leftContainer {
-  /* margin-top: 12px;
-  margin-left: 32px; */
   background-color: #ffffff;
   padding: 12px;
   width: 60px;
@@ -10,7 +8,7 @@
   .leftLogos {
       display: flex;
       flex-direction: column;
-      /* margin-top: 10px; */
-      /* gap: 20px; */
+      margin-top: 10px;
+      gap: 20px;
   }
 }
