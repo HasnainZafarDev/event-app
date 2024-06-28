@@ -45,22 +45,20 @@ const useEventData = () => {
                 key
               };
             });
-    
             setEvents(formattedEvents);
             setFavorites(Array(formattedEvents.length).fill(false))
             setIsLoading(false);
-            console.log(data.results)
           } catch (error) {
             console.error("Error fetching data: ", error);
           }
         };
-      
         fetchData();
       }, []);
 
       return{
         events,
         favorites,
+        setFavorites,
         isLoading
       }
 }

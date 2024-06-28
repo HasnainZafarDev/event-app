@@ -12,12 +12,11 @@ import {
 } from "@/components/ui/table";
 import EventCard from "../card/EventCard";
 import FilterCard from "../filterCard/FilterCard";
-import useEventData from "@/app/hooks/useEventData";
-import { ColorRing } from "react-loader-spinner";
-
-const EventList = () => {
-  const { events, favorites, isLoading } = useEventData();
-  console.log("eventList ", events);
+const EventList = ({
+  events,
+  favorites,
+  setFavorites
+}) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -34,7 +33,6 @@ const EventList = () => {
   const closeModal = () => {
     setSelectedEvent(null);
   };
-
   return (
     <>
       <div className="tableContainer">
@@ -62,36 +60,36 @@ const EventList = () => {
             <TableHead></TableHead>
           </TableRow>
         </TableHeader>
-        
-      
-          <TableBody>
-            {events.map((event, index) => (
-              <TableRow
-                key={event.id}
-                className="tableRow"
-                onClick={() => handleRowClick(event)}
-              >
-                <TableCell>{event.key}</TableCell>
-                <TableCell>{event.title}</TableCell>
-                <TableCell>{event.time}</TableCell>
-                <TableCell>{event.formattedDate}</TableCell>
-                <TableCell>{event.geo.address.formatted_address}</TableCell>
-                <TableCell className="favoriteCell">
-                  <Image
-                    src={favorites[index] ? "/redheart.png" : "/vector.png"}
-                    height={18}
-                    width={19}
-                    alt=""
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleFavoriteClick(index);
-                    }}
-                  />
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        
+
+
+        <TableBody>
+          {events?.map((event, index) => (
+            <TableRow
+              key={event.id}
+              className="tableRow"
+              onClick={() => handleRowClick(event)}
+            >
+              <TableCell>{event.key}</TableCell>
+              <TableCell>{event.title}</TableCell>
+              <TableCell>{event.time}</TableCell>
+              <TableCell>{event.formattedDate}</TableCell>
+              <TableCell>{event.geo.address.formatted_address}</TableCell>
+              <TableCell className="favoriteCell">
+                <Image
+                  src={favorites[index] ? "/redheart.png" : "/vector.png"}
+                  height={18}
+                  width={19}
+                  alt=""
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFavoriteClick(index);
+                  }}
+                />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+
       </Table>
       {selectedEvent && (
         <div className="modalOverlay" onClick={closeModal}>
