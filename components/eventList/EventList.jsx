@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import "./style.css";
 import {
@@ -12,77 +12,12 @@ import {
 } from "@/components/ui/table";
 import EventCard from "../card/EventCard";
 import FilterCard from "../filterCard/FilterCard";
-
-const events = [
-  {
-    id: 1,
-    name: "Hasnain",
-    time: "12:00:00",
-    date: "Thu, 21 May",
-    location: "Behria Intellectual Village",
-    imgUrl: "/vector.png",
-  },
-  {
-    id: 2,
-    name: "Hasnain",
-    time: "12:00:00",
-    date: "Thu, 21 May",
-    location: "Behria Intellectual Village",
-    imgUrl: "/vector.png",
-  },
-  {
-    id: 3,
-    name: "Hasnain",
-    time: "12:00:00",
-    date: "Thu, 21 May",
-    location: "Behria Intellectual Village",
-    imgUrl: "/vector.png",
-  },
-  {
-    id: 4,
-    name: "Hasnain",
-    time: "12:00:00",
-    date: "Thu, 21 May",
-    location: "Behria Intellectual Village",
-    imgUrl: "/vector.png",
-  },
-  {
-    id: 5,
-    name: "Hasnain",
-    time: "12:00:00",
-    date: "Thu, 21 May",
-    location: "Behria Intellectual Village",
-    imgUrl: "/vector.png",
-  },
-  {
-    id: 6,
-    name: "Hasnain",
-    time: "12:00:00",
-    date: "Thu, 21 May",
-    location: "Behria Intellectual Village",
-    imgUrl: "/vector.png",
-  },
-  {
-    id: 7,
-    name: "Hasnain",
-    time: "12:00:00",
-    date: "Thu, 21 May",
-    location: "Behria Intellectual Village",
-    imgUrl: "/vector.png",
-  },
-  {
-    id: 8,
-    name: "Hasnain",
-    time: "12:00:00",
-    date: "Thu, 21 May",
-    location: "Behria Intellectual Village",
-    imgUrl: "/vector.png",
-  },
-  
-];
+import useEventData from "@/app/hooks/useEventData";
+import { ColorRing } from "react-loader-spinner";
 
 const EventList = () => {
-  const [favorites, setFavorites] = useState(Array(events.length).fill(false));
+  const { events, favorites, isLoading } = useEventData();
+  console.log("eventList ", events);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -127,33 +62,36 @@ const EventList = () => {
             <TableHead></TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
-          {events.map((event, index) => (
-            <TableRow
-              key={event.id}
-              className="tableRow"
-              onClick={() => handleRowClick(event)}
-            >
-              <TableCell>{event.id}</TableCell>
-              <TableCell>{event.name}</TableCell>
-              <TableCell>{event.time}</TableCell>
-              <TableCell>{event.date}</TableCell>
-              <TableCell>{event.location}</TableCell>
-              <TableCell className="favoriteCell">
-                <Image
-                  src={favorites[index] ? "/redheart.png" : event.imgUrl}
-                  height={18}
-                  width={19}
-                  alt=""
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleFavoriteClick(index);
-                  }}
-                />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+        
+      
+          <TableBody>
+            {events.map((event, index) => (
+              <TableRow
+                key={event.id}
+                className="tableRow"
+                onClick={() => handleRowClick(event)}
+              >
+                <TableCell>{event.key}</TableCell>
+                <TableCell>{event.title}</TableCell>
+                <TableCell>{event.time}</TableCell>
+                <TableCell>{event.formattedDate}</TableCell>
+                <TableCell>{event.geo.address.formatted_address}</TableCell>
+                <TableCell className="favoriteCell">
+                  <Image
+                    src={favorites[index] ? "/redheart.png" : "/vector.png"}
+                    height={18}
+                    width={19}
+                    alt=""
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleFavoriteClick(index);
+                    }}
+                  />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        
       </Table>
       {selectedEvent && (
         <div className="modalOverlay" onClick={closeModal}>

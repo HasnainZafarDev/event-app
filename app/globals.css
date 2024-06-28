@@ -6,9 +6,11 @@ body {
 }
 .homeContainer {
   display: flex;
+  background-color: rebeccapurple;
+  justify-content: space-between;
   .middleSection {
-    flex: 2;
-    margin: 10px;
+    /* flex: 2; */
+    /* margin: 10px; */
   }
 }
 .notFoundContainer {
@@ -33,4 +35,8 @@ body {
 .homeLink {
   font-size: 1.25rem;
   color: blue;
+}
+
+.loadingComponents{
+  display: flex;
 }
