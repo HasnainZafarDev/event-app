@@ -4,22 +4,26 @@ import "./style.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { SlArrowDown } from "react-icons/sl";
-const FilterCard = () => {
+const FilterCard = ({ events, onCategoryChange }) => {
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const [showFromDatePicker, setShowFromDatePicker] = useState(false);
   const [showToDatePicker, setShowToDatePicker] = useState(false);
 
+  const filterTitles = [...new Set(events.map(event => event.formattedTitle))]
+
+  const handleCategorySelect = (event) => {
+    onCategoryChange(event.target.value);
+  };
   return (
     <>
       <div className="filterContainer">
         <div className="category">
           <h1>Category</h1>
-          <select>
-            <option>Web Development</option>
-            <option>AI</option>
-            <option>UI/UX Design</option>
-            <option>Mobile Development</option>
+          <select onChange={handleCategorySelect}>
+            {filterTitles.map((title,index)=> (
+              <option key={index} value={title}>{title}</option>
+            ) )}
           </select>
         </div>
 

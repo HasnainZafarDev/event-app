@@ -6,7 +6,7 @@ const useEventData = () => {
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [highestRank, setHighestRank] = useState(null);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -37,7 +37,7 @@ const useEventData = () => {
           const date = new Date(event.start);
           const hours = date.getHours();
           const minutes = date.getMinutes();
-                  ///////////////////For Formatted Title for every object
+          ///////////////////For Formatted Title for every object
           const formattedTitle = event.title.split(" ").slice(0, 2).join(" ");
 
           const formattedTime = `${hours % 12 || 12}:${minutes

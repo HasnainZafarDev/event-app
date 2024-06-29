@@ -7,9 +7,21 @@ import EventOfTheMonth from "@/components/eventOfTheMonth/EventOfTheMonth";
 import Card from "@/components/belowCards/Card";
 import useEventData from "./hooks/useEventData";
 import { ColorRing } from "react-loader-spinner";
+import { useState } from "react";
 
 export default function Home() {
   const { isLoading, events, favorites, setFavorites,highestRank } = useEventData();
+   const [selectedCategory, setSelectedCategory] = useState("")
+
+   const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const filteredEvents = selectedCategory
+    ? events.filter((event) => event.formattedTitle === selectedCategory)
+    : events;
+
+
   return (
     <div className="homeContainer">
       {isLoading ? (
@@ -30,9 +42,12 @@ export default function Home() {
           <LeftNavbar />
           <div className="middleSection">
             <EventList
-              events={events}
               favorites={favorites}
               setFavorites={setFavorites}
+              filteredEvents={filteredEvents}
+              //this event is just to pass it to filter card component through props
+              events={events}
+              onCategoryChange={handleCategoryChange} 
             />
             <Card />
           </div>

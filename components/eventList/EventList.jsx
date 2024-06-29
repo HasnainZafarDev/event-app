@@ -15,7 +15,9 @@ import FilterCard from "../filterCard/FilterCard";
 const EventList = ({
   events,
   favorites,
-  setFavorites
+  setFavorites,
+  filteredEvents,
+  onCategoryChange,
 }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -26,8 +28,8 @@ const EventList = ({
     setFavorites(newFavorites);
   };
 
-  const handleRowClick = (event) => {
-    setSelectedEvent(event);
+  const handleRowClick = (filteredEvent) => {
+    setSelectedEvent(filteredEvent);
   };
 
   const closeModal = () => {
@@ -45,7 +47,7 @@ const EventList = ({
           className="img"
           onClick={(e) => setShowModal((prev) => !prev)}
         />
-        {showModal && <FilterCard />}
+        {showModal && <FilterCard events={events}  onCategoryChange={onCategoryChange} />}
       </div>
       <Table>
         <TableHeader>
@@ -63,17 +65,17 @@ const EventList = ({
 
 
         <TableBody>
-          {events?.map((event, index) => (
+          {filteredEvents?.map((filteredEvent, index) => (
             <TableRow
-              key={event.id}
+              key={filteredEvent.id}
               className="tableRow"
-              onClick={() => handleRowClick(event)}
+              onClick={() => handleRowClick(filteredEvent)}
             >
-              <TableCell>{event.key}</TableCell>
-              <TableCell>{event.formattedTitle}</TableCell>
-              <TableCell>{event.time}</TableCell>
-              <TableCell>{event.formattedDate}</TableCell>
-              <TableCell>{event.geo.address.formatted_address}</TableCell>
+              <TableCell>{filteredEvent.key}</TableCell>
+              <TableCell>{filteredEvent.formattedTitle}</TableCell>
+              <TableCell>{filteredEvent.time}</TableCell>
+              <TableCell>{filteredEvent.formattedDate}</TableCell>
+              <TableCell>{filteredEvent?.geo?.address.formatted_address}</TableCell>
               <TableCell className="favoriteCell">
                 <Image
                   src={favorites[index] ? "/redheart.png" : "/vector.png"}

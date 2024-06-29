@@ -1,7 +1,6 @@
 import Image from "next/image"
 import "./style.css"
 const WhiteCard = ({highestRank}) => {
-  console.log(highestRank)
   return (
     <div>
       <div className="detailCard">

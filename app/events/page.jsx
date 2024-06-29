@@ -4,9 +4,18 @@ import LeftNavbar from "@/components/leftNavbar/LeftNavbar";
 import useEventData from "../hooks/useEventData";
 import { ColorRing } from "react-loader-spinner";
 import Card from "@/components/belowCards/Card";
+import { useState } from "react";
 
 const page = () => {
   const { isLoading, events, favorites, setFavorites } = useEventData();
+  const [selectedCategory, setSelectedCategory] = useState("")
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+  const filteredEvents = selectedCategory
+    ? events.filter((event) => event.formattedTitle === selectedCategory)
+    : events;
   return (
     <div className="mainEventDiv">
       {isLoading ? (
@@ -37,8 +46,10 @@ const page = () => {
           <div className="subEventDiv">
             <EventList
               events={events}
+              filteredEvents={filteredEvents}
               favorites={favorites}
               setFavorites={setFavorites}
+              onCategoryChange={handleCategoryChange} 
             />
             <Card/>
           </div>

@@ -2,14 +2,13 @@ import Image from "next/image";
 import "./style.css";
 
 const EventCard = ({event}) => {
-  console.log("eventCard", event);
   return (
     <>
-      <div className="eventCard">
+      <div className="eventCardContainer">
         <div className="top">
           <div className="topDesc">
             <h1>{event.formattedTitle}</h1>
-            <div className="topDate">{event.formattedDate}, {event.time}</div>
+            <div className="topDate">{event.formattedDate}, {event.formattedTime}</div>
           </div>
           <div className="category">
             <span>Category: <span style={{textTransform:"uppercase"}}>{event.category}</span></span>
@@ -25,7 +24,7 @@ const EventCard = ({event}) => {
 
         <div className="end">
           <Image src="/map.png" height={32} width={32} alt="" />
-          <span>{event.geo.address.locality}</span>
+          <span>{event?.geo?.address?.locality}</span>
         </div>
       </div>
     </>
