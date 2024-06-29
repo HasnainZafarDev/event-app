@@ -20,7 +20,7 @@ const UpcomingEvents = ({ events, favorites, setFavorites }) => {
             </div>
             <div className="eventDate">
               <span>{event.formattedDate + ", " }</span>
-              <span>{event.time}</span>
+              <span>{event.formattedTime}</span>
             </div>
           </div>
           <Image

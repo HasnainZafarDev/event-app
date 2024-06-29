@@ -73,7 +73,7 @@ const EventList = ({
             >
               <TableCell>{filteredEvent.key}</TableCell>
               <TableCell>{filteredEvent.formattedTitle}</TableCell>
-              <TableCell>{filteredEvent.time}</TableCell>
+              <TableCell>{filteredEvent.formattedTime}</TableCell>
               <TableCell>{filteredEvent.formattedDate}</TableCell>
               <TableCell>{filteredEvent?.geo?.address.formatted_address}</TableCell>
               <TableCell className="favoriteCell">
