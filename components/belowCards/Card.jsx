@@ -4,7 +4,7 @@ const Card = () => {
   return (
     <div className='cardContainer'>
       <div className='card'>
-        <h3>Add Events</h3>
+        <h3>All Events</h3>
         <span>2.10k</span>
       </div>
 

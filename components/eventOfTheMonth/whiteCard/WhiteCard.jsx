@@ -1,18 +1,19 @@
 import Image from "next/image"
 import "./style.css"
-const WhiteCard = () => {
+const WhiteCard = ({highestRank}) => {
+  console.log(highestRank)
   return (
     <div>
       <div className="detailCard">
         <div className="left">
-          <h1>Web Development</h1>
+          <h1>{highestRank?.formattedTitle}</h1>
           <div>
-            <span>Category: AI</span>
+            <span>Category:<span style={{textTransform:"uppercase"}}>{highestRank?.category}</span></span>
           </div>
 
           <div className="map">
             <Image src="/map.png" alt="" height={12} width={15} />
-            <span>Bahria Intellectual Village</span>
+            <span>{highestRank?.geo?.address?.locality}</span>
           </div>
         </div>
 
@@ -23,11 +24,11 @@ const WhiteCard = () => {
           </div>
 
           <div className="date">
-            Thu 2 Nov 2023
+           {highestRank?.formattedDate}
           </div>
 
           <div className="time">
-            12:00am
+           {highestRank?.time}
           </div>
           
         </div>

@@ -10,8 +10,8 @@ body {
   padding-left: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
-  padding-right: 60px;
-  .spinerLoaderContainer{
+  padding-right: 40px;
+  .spinerLoaderContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,6 +47,15 @@ body {
   color: blue;
 }
 
-.loadingComponents{
+.loadingComponents {
   display: flex;
+}
+
+.mainEventDiv {
+  display: flex;
+  gap: 20px;
+  padding: 30px 50px 30px 30px;
+}
+.subEventDiv {
+  flex: 2;
 }

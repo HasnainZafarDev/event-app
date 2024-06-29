@@ -2,7 +2,7 @@ import Image from "next/image";
 import "./style.css";
 import WhiteCard from "./whiteCard/WhiteCard";
 
-const EventOfTheMonth = () => {
+const EventOfTheMonth = ({highestRank}) => {
   return (
     <div className="monthContainer">
       <div className="titleCard">
@@ -12,7 +12,7 @@ const EventOfTheMonth = () => {
         </h1>
         <Image src="/badge.png" alt="" height={70} width={70} />
       </div>
-      <WhiteCard />
+      <WhiteCard highestRank={highestRank}/>
     </div>
   );
 };

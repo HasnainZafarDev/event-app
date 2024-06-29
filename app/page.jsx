@@ -9,7 +9,7 @@ import useEventData from "./hooks/useEventData";
 import { ColorRing } from "react-loader-spinner";
 
 export default function Home() {
-  const { isLoading, events, favorites, setFavorites } = useEventData();
+  const { isLoading, events, favorites, setFavorites,highestRank } = useEventData();
   return (
     <div className="homeContainer">
       {isLoading ? (
@@ -37,8 +37,12 @@ export default function Home() {
             <Card />
           </div>
           <div className="flex flex-col gap-4">
-            <UpcomingEvents />
-            <EventOfTheMonth />
+            <UpcomingEvents
+              events={events}
+              favorites={favorites}
+              setFavorites={setFavorites}
+            />
+            <EventOfTheMonth highestRank={highestRank}/>
           </div>
         </>
       )}

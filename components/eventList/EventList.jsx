@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import "./style.css";
 import {
@@ -94,7 +94,7 @@ const EventList = ({
       {selectedEvent && (
         <div className="modalOverlay" onClick={closeModal}>
           <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-            <EventCard event={selectedEvent} />
+            <EventCard selectedEvent={selectedEvent} />
           </div>
         </div>
       )}

@@ -1,23 +1,25 @@
 "use client";
 import EventList from "@/components/eventList/EventList";
 import LeftNavbar from "@/components/leftNavbar/LeftNavbar";
-import React from "react";
 import useEventData from "../hooks/useEventData";
 import { ColorRing } from "react-loader-spinner";
+import Card from "@/components/belowCards/Card";
 
 const page = () => {
   const { isLoading, events, favorites, setFavorites } = useEventData();
   return (
-    <div className="flex">
+    <div className="mainEventDiv">
       {isLoading ? (
-        <div className="spinerLoaderContainer"
-        style={{
-          display: "flex",
-          "justify-content": "center",
-          "align-items": "center",
-          "height": "100vh",
-          "width": "100%",
-        }}>
+        <div
+          className="spinerLoaderContainer"
+          style={{
+            display: "flex",
+            "justify-content": "center",
+            "align-items": "center",
+            height: "100vh",
+            width: "100%",
+          }}
+        >
           <ColorRing
             visible={true}
             ariaLabel="color-ring-loading"
@@ -32,12 +34,13 @@ const page = () => {
       ) : (
         <>
           <LeftNavbar />
-          <div className="flex-1 ml-6 mr-4 mt-2">
+          <div className="subEventDiv">
             <EventList
               events={events}
               favorites={favorites}
               setFavorites={setFavorites}
             />
+            <Card/>
           </div>
         </>
       )}
