@@ -36,7 +36,7 @@ export default function Home() {
             />
             <Card />
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="lastSection">
             <UpcomingEvents
               events={events}
               favorites={favorites}
