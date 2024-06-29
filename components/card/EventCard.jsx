@@ -1,37 +1,31 @@
 import Image from "next/image";
 import "./style.css";
 
-const EventCard = () => {
+const EventCard = ({event}) => {
+  console.log("eventCard", event);
   return (
     <>
       <div className="eventCard">
         <div className="top">
           <div className="topDesc">
-            <h1>Web Development</h1>
-            <div className="topDate">Thu 2 Nov 2023, 12:00am</div>
+            <h1>{event.formattedTitle}</h1>
+            <div className="topDate">{event.formattedDate}, {event.time}</div>
           </div>
           <div className="category">
-            <span>Category: AI</span>
+            <span>Category: <span style={{textTransform:"uppercase"}}>{event.category}</span></span>
           </div>
         </div>
 
         <div className="mid">
           <h1>Description</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur. Massa fermentum suspendisse
-            nec id turpis et. Diam lacus rutrum nec habitasse ridiculus
-            malesuada amet. Consectetur ultrices netus sed et vitae euismod. Non
-            volutpat justo morbi faucibus. Lectus pulvinar aliquet vel luctus
-            lectus. Gravida ultricies est eget aliquet odio blandit eget.
-            Viverra nunc est nunc quam tincidunt. Arcu duis cras in mollis et.
-            At amet integer sit commodo elementum consequat facilisi nunc mi.
-            Vitae ac et et vel.
+          {event.description}
           </p>
         </div>
 
         <div className="end">
           <Image src="/map.png" height={32} width={32} alt="" />
-          <span>Bahria Intellectual Village</span>
+          <span>{event.geo.address.locality}</span>
         </div>
       </div>
     </>

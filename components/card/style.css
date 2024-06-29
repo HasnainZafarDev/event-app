@@ -1,8 +1,10 @@
 .eventCard {
   background-color: #ffffff;
-  height: 442px;
   width: 792px;
-  padding: 32px 32px 64px 32px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
   .top {
     display: flex;
     flex-direction: column;
@@ -13,6 +15,7 @@
   .topDesc {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     h1 {
       font-size: 30px;
       font-weight: 600;
@@ -30,7 +33,7 @@
     }
   }
   .category{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
       span {
           color: #475569;
           font-weight: 400;
@@ -53,7 +56,7 @@
             font-weight: 400;
             font-size: 16px;
             color: #9E9E9E;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
     }
     .end{
@@ -61,7 +64,7 @@
         padding: 5px;
         gap: 10px;
         align-items: center;
-        margin-top: 15px;
+        margin-top: 10px;
         span{
             font-weight: 400;
             font-size: 22px;

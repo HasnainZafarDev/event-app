@@ -16,7 +16,7 @@ const UpcomingEvents = ({ events, favorites, setFavorites }) => {
         <div key={index} className="eventCard">
           <div className="cardInfo">
             <div className="eventName">
-              <span>{event.title}</span>
+              <span>{event.formattedTitle}</span>
             </div>
             <div className="eventDate">
               <span>{event.formattedDate + ", " }</span>

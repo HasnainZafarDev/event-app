@@ -70,7 +70,7 @@ const EventList = ({
               onClick={() => handleRowClick(event)}
             >
               <TableCell>{event.key}</TableCell>
-              <TableCell>{event.title}</TableCell>
+              <TableCell>{event.formattedTitle}</TableCell>
               <TableCell>{event.time}</TableCell>
               <TableCell>{event.formattedDate}</TableCell>
               <TableCell>{event.geo.address.formatted_address}</TableCell>
@@ -94,7 +94,7 @@ const EventList = ({
       {selectedEvent && (
         <div className="modalOverlay" onClick={closeModal}>
           <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-            <EventCard selectedEvent={selectedEvent} />
+            <EventCard event={selectedEvent} />
           </div>
         </div>
       )}

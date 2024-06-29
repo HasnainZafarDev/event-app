@@ -25,9 +25,6 @@ const useEventData = () => {
         const highestRankObject = data.results.reduce((prev, current) => {
           return prev.rank > current.rank ? prev : current;
         });
-        ///////////////////For Formatted Title for every object
-        const title = event?.title;
-        const formattedtitle = title?.split(" ").slice(0, 2).join(" ");
         ///////////////////For Formatted Title for highest Rank object
         highestRankObject.formattedTitle = highestRankObject.title
           .split(" ")
@@ -40,6 +37,8 @@ const useEventData = () => {
           const date = new Date(event.start);
           const hours = date.getHours();
           const minutes = date.getMinutes();
+                  ///////////////////For Formatted Title for every object
+          const formattedTitle = event.title.split(" ").slice(0, 2).join(" ");
 
           const formattedTime = `${hours % 12 || 12}:${minutes
             .toString()
@@ -76,11 +75,11 @@ const useEventData = () => {
 
           return {
             ...event,
-            time: formattedTime,
-            formattedDate: formattedDate,
+            formattedTime,
+            formattedDate,
             key,
-            highestRank: highestRank,
-            formattedtitle: formattedtitle,
+            highestRank,
+            formattedTitle,
           };
         });
         setHighestRank(highestRankObject);
