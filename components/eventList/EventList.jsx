@@ -12,10 +12,9 @@ import {
 } from "@/components/ui/table";
 import EventCard from "../card/EventCard";
 import FilterCard from "../filterCard/FilterCard";
-const EventList = ({ events, filteredEvents, onCategoryChange,handleFavoriteClick,isFavorite }) => {
+const EventList = ({ events, filteredEvents, onCategoryChange,handleFavoriteClick,isFavorite,fromDate,toDate,selectedCategory }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showModal, setShowModal] = useState(false);
-
   const handleRowClick = (filteredEvent) => {
     setSelectedEvent(filteredEvent);
   };
@@ -37,7 +36,7 @@ const EventList = ({ events, filteredEvents, onCategoryChange,handleFavoriteClic
           onClick={(e) => setShowModal((prev) => !prev)}
         />
         {showModal && (
-          <FilterCard events={events} onCategoryChange={onCategoryChange} />
+          <FilterCard events={events} onCategoryChange={onCategoryChange} fromDate={fromDate} toDate={toDate} selectedCategory={selectedCategory}/>
         )}
       </div>
       <Table>

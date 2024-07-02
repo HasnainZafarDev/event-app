@@ -79,6 +79,7 @@ const useEventData = () => {
             ...event,
             formattedTime,
             formattedDate,
+            formattedDateWithYear: `${formattedDate} ${date.getFullYear()}`,
             key,
             highestRank,
             formattedTitle,

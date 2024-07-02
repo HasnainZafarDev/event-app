@@ -4,16 +4,14 @@ import "./style.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { SlArrowDown } from "react-icons/sl";
-const FilterCard = ({ events, onCategoryChange }) => {
-  const [fromDate, setFromDate] = useState(null);
-  const [toDate, setToDate] = useState(null);
+const FilterCard = ({ events, onCategoryChange ,fromDate,toDate,selectedCategory }) => {
   const [showFromDatePicker, setShowFromDatePicker] = useState(false);
   const [showToDatePicker, setShowToDatePicker] = useState(false);
 
   const filterTitles = [...new Set(events.map(event => event.formattedTitle))]
 
   const handleCategorySelect = (event) => {
-    onCategoryChange(event.target.value);
+    onCategoryChange(event.target.value,fromDate,toDate);
   };
   return (
     <>
@@ -43,7 +41,7 @@ const FilterCard = ({ events, onCategoryChange }) => {
               >
                 <DatePicker
                   selected={fromDate}
-                  onChange={(date) => setFromDate(date)}
+                  onChange={(date) => onCategoryChange(selectedCategory,date,toDate)}
                   showTimeSelect
                   dateFormat="dd/MM/yyyy | hh:mm aa"
                   placeholderText="dd/mm/yyyy | 12:00am"
@@ -61,7 +59,7 @@ const FilterCard = ({ events, onCategoryChange }) => {
               >
                 <DatePicker
                   selected={toDate}
-                  onChange={(date) => setToDate(date)}
+                  onChange={(date) => onCategoryChange(selectedCategory,fromDate,date)}
                   showTimeSelect
                   dateFormat="dd/MM/yyyy | hh:mm aa"
                   placeholderText="dd/mm/yyyy | 12:00am"

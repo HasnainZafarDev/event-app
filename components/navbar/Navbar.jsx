@@ -14,6 +14,7 @@ const Navbar = () => {
         <Image src="/search.png" height={24} width={24} alt="" />
         <input placeholder="Search events..." />
       </div>
+        <Image src="/list-minus.png" height={30} width={30} alt="" className="responsive-image"/>
     </div>
   );
 };

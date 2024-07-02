@@ -15,13 +15,30 @@ export default function Home() {
   const {handleFavoriteClick, isFavorite } = useFavorites();
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  const handleCategoryChange = (category) => {
+  const [fromDate, setFromDate] = useState(null);
+  const [toDate, setToDate] = useState(null);
+
+  const handleCategoryChange = (category, fromDate, toDate) => {
     setSelectedCategory(category);
+    setFromDate(fromDate);
+    setToDate(toDate);
   };
 
-  const filteredEvents = selectedCategory
-    ? events.filter((event) => event.formattedTitle === selectedCategory)
-    : events;
+  // Filter events based on selected category, fromDate, and toDate
+  const filteredEvents = events.filter((event) => {
+    if (selectedCategory && event.formattedTitle !== selectedCategory) {
+      return false;
+    }
+    const eventDate = new Date(event.formattedDateWithYear + " " + event.formattedTime);
+    
+    if (fromDate && eventDate < fromDate) {
+      return false;
+    }
+    if (toDate && eventDate > toDate) {
+      return false;
+    }
+    return true;
+  });
 
   return (
     <div className="homeContainer">
@@ -49,6 +66,10 @@ export default function Home() {
               onCategoryChange={handleCategoryChange}
               //this event is just to pass it to filter card component through props
               events={events}
+              fromDate={fromDate}
+              toDate={toDate}
+              selectedCategory={selectedCategory}
+              
             />
             <Card />
           </div>
