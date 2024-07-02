@@ -5,10 +5,12 @@ import useEventData from "../hooks/useEventData";
 import { ColorRing } from "react-loader-spinner";
 import Card from "@/components/belowCards/Card";
 import { useState } from "react";
+import useFavorites from "../hooks/useFavorites";
 
 const page = () => {
-  const { isLoading, events, favorites, setFavorites } = useEventData();
-  const [selectedCategory, setSelectedCategory] = useState("")
+  const { isLoading, events } = useEventData();
+  const { handleFavoriteClick, isFavorite } = useFavorites();
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -45,13 +47,14 @@ const page = () => {
           <LeftNavbar />
           <div className="subEventDiv">
             <EventList
-              events={events}
               filteredEvents={filteredEvents}
-              favorites={favorites}
-              setFavorites={setFavorites}
-              onCategoryChange={handleCategoryChange} 
+              isFavorite={isFavorite}
+              handleFavoriteClick={handleFavoriteClick}
+              onCategoryChange={handleCategoryChange}
+              //this event is just to pass it to filter card component through props
+              events={events}
             />
-            <Card/>
+            <Card />
           </div>
         </>
       )}

@@ -8,6 +8,8 @@ const useEventData = () => {
   const [highestRank, setHighestRank] = useState(null);
 
   useEffect(() => {
+    const savedFavorites = JSON.parse(localStorage.getItem("favoriteEvents"))
+  setFavorites(savedFavorites) 
     const fetchData = async () => {
       try {
         setIsLoading(true);
@@ -84,14 +86,13 @@ const useEventData = () => {
         });
         setHighestRank(highestRankObject);
         setEvents(formattedEvents);
-        setFavorites(Array(formattedEvents.length).fill(false));
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
     };
     fetchData();
-  }, []);
+  }, [setFavorites]);
 
   return {
     events,

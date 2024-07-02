@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import "./style.css";
 import {
@@ -12,21 +12,9 @@ import {
 } from "@/components/ui/table";
 import EventCard from "../card/EventCard";
 import FilterCard from "../filterCard/FilterCard";
-const EventList = ({
-  events,
-  favorites,
-  setFavorites,
-  filteredEvents,
-  onCategoryChange,
-}) => {
+const EventList = ({ events, filteredEvents, onCategoryChange,handleFavoriteClick,isFavorite }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showModal, setShowModal] = useState(false);
-
-  const handleFavoriteClick = (index) => {
-    const newFavorites = [...favorites];
-    newFavorites[index] = !newFavorites[index];
-    setFavorites(newFavorites);
-  };
 
   const handleRowClick = (filteredEvent) => {
     setSelectedEvent(filteredEvent);
@@ -35,6 +23,7 @@ const EventList = ({
   const closeModal = () => {
     setSelectedEvent(null);
   };
+
   return (
     <>
       <div className="tableContainer">
@@ -47,7 +36,9 @@ const EventList = ({
           className="img"
           onClick={(e) => setShowModal((prev) => !prev)}
         />
-        {showModal && <FilterCard events={events}  onCategoryChange={onCategoryChange} />}
+        {showModal && (
+          <FilterCard events={events} onCategoryChange={onCategoryChange} />
+        )}
       </div>
       <Table>
         <TableHeader>
@@ -63,7 +54,6 @@ const EventList = ({
           </TableRow>
         </TableHeader>
 
-
         <TableBody>
           {filteredEvents?.map((filteredEvent, index) => (
             <TableRow
@@ -75,23 +65,26 @@ const EventList = ({
               <TableCell>{filteredEvent.formattedTitle}</TableCell>
               <TableCell>{filteredEvent.formattedTime}</TableCell>
               <TableCell>{filteredEvent.formattedDate}</TableCell>
-              <TableCell>{filteredEvent?.geo?.address.formatted_address}</TableCell>
+              <TableCell>
+                {filteredEvent?.geo?.address.formatted_address}
+              </TableCell>
               <TableCell className="favoriteCell">
                 <Image
-                  src={favorites[index] ? "/redheart.png" : "/vector.png"}
+                  src={
+                    isFavorite(filteredEvent) ? "/redheart.png" : "/vector.png"
+                  }
                   height={18}
                   width={19}
                   alt=""
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleFavoriteClick(index);
+                    handleFavoriteClick(filteredEvent);
                   }}
                 />
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
-
       </Table>
       {selectedEvent && (
         <div className="modalOverlay" onClick={closeModal}>

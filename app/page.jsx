@@ -8,19 +8,20 @@ import Card from "@/components/belowCards/Card";
 import useEventData from "./hooks/useEventData";
 import { ColorRing } from "react-loader-spinner";
 import { useState } from "react";
+import useFavorites from "./hooks/useFavorites";
 
 export default function Home() {
-  const { isLoading, events, favorites, setFavorites,highestRank } = useEventData();
-   const [selectedCategory, setSelectedCategory] = useState("")
+  const { isLoading, events, highestRank } = useEventData();
+  const {handleFavoriteClick, isFavorite } = useFavorites();
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-   const handleCategoryChange = (category) => {
+  const handleCategoryChange = (category) => {
     setSelectedCategory(category);
   };
 
   const filteredEvents = selectedCategory
     ? events.filter((event) => event.formattedTitle === selectedCategory)
     : events;
-
 
   return (
     <div className="homeContainer">
@@ -42,22 +43,22 @@ export default function Home() {
           <LeftNavbar />
           <div className="middleSection">
             <EventList
-              favorites={favorites}
-              setFavorites={setFavorites}
               filteredEvents={filteredEvents}
+              isFavorite={isFavorite}
+              handleFavoriteClick={handleFavoriteClick}
+              onCategoryChange={handleCategoryChange}
               //this event is just to pass it to filter card component through props
               events={events}
-              onCategoryChange={handleCategoryChange} 
             />
             <Card />
           </div>
           <div className="lastSection">
             <UpcomingEvents
-              events={events}
-              favorites={favorites}
-              setFavorites={setFavorites}
+              filteredEvents={filteredEvents}
+              handleFavoriteClick={handleFavoriteClick}
+              isFavorite={isFavorite}
             />
-            <EventOfTheMonth highestRank={highestRank}/>
+            <EventOfTheMonth highestRank={highestRank} />
           </div>
         </>
       )}
