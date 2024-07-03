@@ -23,7 +23,7 @@ const EventCard = ({event}) => {
         </div>
 
         <div className="end">
-          <Image src="/map.png" height={32} width={32} alt="" />
+          <Image src="/map.png" height={32} width={32} alt="" className="mapImg" />
           <span>{event?.geo?.address?.locality}</span>
         </div>
       </div>

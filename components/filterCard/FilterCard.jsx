@@ -27,13 +27,12 @@ const FilterCard = ({ events, onCategoryChange ,fromDate,toDate,selectedCategory
 
         <div className="sort">
           <h1>Date & Time</h1>
-
-          <div className="inputsHead">
-            <span>From</span>
-            <span>To</span>
-          </div>
-
+<div className="inputContainer">
+  
           <div className="inputs">
+          <div className="inputsHead">
+            <span>From</span> 
+          </div>
             <div className="custom-date-input">
               <div
                 className="inputField"
@@ -51,6 +50,38 @@ const FilterCard = ({ events, onCategoryChange ,fromDate,toDate,selectedCategory
                 <SlArrowDown className="dropDown" />
               </div>
             </div>
+              </div>
+            
+          <div className="inputs">
+          <div className="inputsHead">
+            <span>To</span> 
+          </div>
+            <div className="custom-date-input">
+              <div
+                className="inputField"
+                onClick={() => setShowFromDatePicker((prev) => !prev)}
+              >
+                <DatePicker
+                  selected={fromDate}
+                  onChange={(date) => onCategoryChange(selectedCategory,date,toDate)}
+                  showTimeSelect
+                  dateFormat="dd/MM/yyyy | hh:mm aa"
+                  placeholderText="dd/mm/yyyy | 12:00am"
+                  open={showFromDatePicker}
+                />
+                <div style={{ width: "8px" }} />
+                <SlArrowDown className="dropDown" />
+              </div>
+            </div>
+              </div>
+            
+       
+</div>  
+
+          
+            {/* <div className="inputsHead"> 
+            <span>To</span>
+          </div>
 
             <div className="custom-date-input">
               <div
@@ -68,8 +99,8 @@ const FilterCard = ({ events, onCategoryChange ,fromDate,toDate,selectedCategory
                 <div style={{ width: "8px" }} />
                 <SlArrowDown className="dropDown" />
               </div>
-            </div>
-          </div>
+            </div> */}
+
         </div>
       </div>
     </>

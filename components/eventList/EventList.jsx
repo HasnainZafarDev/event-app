@@ -26,7 +26,8 @@ const EventList = ({ events, filteredEvents, onCategoryChange,handleFavoriteClic
   return (
     <>
       <div className="tableContainer">
-        <h3>Events List</h3>
+        <div className="tableTop">
+        <h1>Events List</h1>
         <Image
           src="/menu.png"
           height={44}
@@ -34,11 +35,11 @@ const EventList = ({ events, filteredEvents, onCategoryChange,handleFavoriteClic
           alt=""
           className="img"
           onClick={(e) => setShowModal((prev) => !prev)}
-        />
+          />
+          </div>
         {showModal && (
           <FilterCard events={events} onCategoryChange={onCategoryChange} fromDate={fromDate} toDate={toDate} selectedCategory={selectedCategory}/>
         )}
-      </div>
       <Table>
         <TableHeader>
           <TableRow>
@@ -72,6 +73,7 @@ const EventList = ({ events, filteredEvents, onCategoryChange,handleFavoriteClic
                   src={
                     isFavorite(filteredEvent) ? "/redheart.png" : "/vector.png"
                   }
+                  className="heartImg"
                   height={18}
                   width={19}
                   alt=""
@@ -92,6 +94,8 @@ const EventList = ({ events, filteredEvents, onCategoryChange,handleFavoriteClic
           </div>
         </div>
       )}
+      
+      </div>
     </>
   );
 };

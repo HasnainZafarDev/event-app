@@ -19,9 +19,11 @@ const page = () => {
     ? events.filter((event) => event.formattedTitle === selectedCategory)
     : events;
   return (
-    <div className="mainEventDiv">
+    <div className="mainFavoriteContainer">
+    <div className="leftNavbar">
       <LeftNavbar />
-      <div className="subEventDiv">
+    </div>
+    <div className="subFavoriteContainer">
         <EventList
           filteredEvents={favorites}
           isFavorite={isFavorite}

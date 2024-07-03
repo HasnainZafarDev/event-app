@@ -1,11 +1,11 @@
 .filterContainer {
   position: absolute;
   top: 60px;
-  right: 0;
+  right: 7px;
   z-index: 1000;
 
-  width: 480px;
-  height: 195px;
+  width: 477px;
+  height: 210px;
   background-color: #ffffff;
   border: 1px solid #cfcdcd;
   padding: 15px;
@@ -17,11 +17,16 @@
     font-weight: 400;
     font-size: 14px;
     color: #0f172a;
+    line-height: 16px;
   }
   .category {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    
+    h1{
+      margin-left: -1px;
+    }
     select {
       color: #797d8c;
       width: 210px;
@@ -33,21 +38,28 @@
   }
 }
 .sort {
-  .inputsHead {
-    margin-top: 7px;
-    margin-bottom: 2px;
+  h1{
+    margin-left: -1px;
+    margin-bottom: 5px;
+  }
+  .inputContainer{
     display: flex;
-    gap: 205px;
+    gap: 20px;
+  }
+  .inputsHead {
     align-content: center;
     span {
       font-weight: 400;
-      font-size: 14px;
+      font-size: 12px;
+      line-height: 14px;
       color: #535353;
     }
   }
   .inputs {
     display: flex;
-    gap: 30px;
+    flex-direction: column;
+    gap: 4px;
+    width: 280px;
   }
   input {
     color: #797d8c;
@@ -66,5 +78,47 @@
       width: 13px;
       height: 10px;
     }
+  }
+}
+@media(max-width:768px){
+  .filterContainer{
+    width: 242px;
+    height: 250px;
+    padding: 14px;
+    .category{
+      select{
+        font-size: 13px;
+      }
+      h1{
+        font-size: 14px;
+        line-height: 16px;
+      }
+    }
+   .sort{
+    .inputContainer{
+      flex-direction: column;
+      gap: 10px;
+    }
+    .inputsHead{
+      flex-direction: column;
+      gap: 10px;
+      span{
+        font-size: 12px;
+      }
+    }
+    .inputs{
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+      input{
+        height: 23px;
+        width: 180px;
+      }
+      .inputField{
+        width: 210px;
+        height: 30px;
+      }
+    }
+   }
   }
 }

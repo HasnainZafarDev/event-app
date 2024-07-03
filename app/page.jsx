@@ -57,7 +57,9 @@ export default function Home() {
         </div>
       ) : (
         <>
+        <div className="leftNavbar">
           <LeftNavbar />
+        </div>
           <div className="middleSection">
             <EventList
               filteredEvents={filteredEvents}

@@ -1,0 +1,28 @@
+.menuBox{
+    background-color: #5041BC;
+    width: 420px;
+    height: 749px;
+    padding: 20px;
+    .menuNavbar{
+        display: flex;
+        align-content: center;
+        align-items: center;
+        gap: 320px;
+    }
+    .menuSection{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        padding: 50px;
+        h1{
+            font-weight: 600;
+            color: #FFFFFF;
+            font-size: 30px;
+            line-height: 36px;
+            border-bottom: 2px solid #FFFFFF;
+            padding: 20px;
+        }
+    }
+}

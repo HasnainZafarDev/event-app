@@ -19,7 +19,7 @@ const page = () => {
     ? events.filter((event) => event.formattedTitle === selectedCategory)
     : events;
   return (
-    <div className="mainEventDiv">
+    <>
       {isLoading ? (
         <div
           className="spinerLoaderContainer"
@@ -43,9 +43,11 @@ const page = () => {
           />
         </div>
       ) : (
-        <>
-          <LeftNavbar />
-          <div className="subEventDiv">
+        <div className="mainFavoriteContainer">
+          <div className="leftNavbar">
+            <LeftNavbar />
+          </div>
+          <div className="subFavoriteContainer">
             <EventList
               filteredEvents={filteredEvents}
               isFavorite={isFavorite}
@@ -56,9 +58,9 @@ const page = () => {
             />
             <Card />
           </div>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
